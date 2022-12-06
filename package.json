@@ -4,6 +4,9 @@
     "author": "your name",
     "description": "My Electron app",
     "main": "launch.js",
+    "engines": {
+        "node": "14.21.1"
+    },
     "scripts": {
         "start": "electron .",
         "start:debug": "DEBUG=true electron ."
