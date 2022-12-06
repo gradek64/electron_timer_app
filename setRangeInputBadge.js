@@ -1,5 +1,6 @@
 function setBubble(range, bubble, bubbleSize) {
   const { value, max, min } = range;
+  console.log('STARTING VALUE',value)
   const minValue = min ? min : 0;
   const maxValue = max ? max : 100;
   const newValue = Number(((value - minValue) * 100) / (maxValue - minValue));

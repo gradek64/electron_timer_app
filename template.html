@@ -1,87 +1,105 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Temperature App</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-    <link rel="stylesheet" href="./material-ui/font/icons.css">
-<link rel="stylesheet" href="./material-ui//css/material.indigo-pink.min.css">
-<link rel="stylesheet" href="./style.css">
-<script defer src="./material-ui/js/material.min.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Timer App</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="script-src 'self' 'unsafe-inline';"
+    />
+    <link rel="stylesheet" href="./material-ui/font/icons.css" />
+    <link
+      rel="stylesheet"
+      href="./material-ui//css/material.indigo-pink.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./material-ui/js/material.min.js"></script>
+  </head>
 
-</head>
+  <!-- this project is using html light material-ui host on https://getmdl.io/ -->
+  <!-- material-ui icons name searchhttps://fonts.google.com/icons?selected=Material+Icons -->
 
-<!-- this project is using html light material-ui host on https://getmdl.io/ -->
-<!-- material-ui icons name searchhttps://fonts.google.com/icons?selected=Material+Icons -->
-
-<body class="main-bg-color">
-  <div class="clock">
-    <div class="clock__second"></div>
-    <div class="clock__minute"></div>
-    <div class="clock__hour"></div>
-    <div class="clock__axis"></div>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-    <section class="clock__indicator"></section>
-  </div>
-  
-</body>
+  <body class="main-bg-color">
+    <div class="clock_container">
+      <div class="clock_display"></div>
+      <div class="clock">
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+        <section class="clock__indicator"></section>
+      </div>
+    </div>
+    <div id="set-button-container">
+      <button id="overlaySlotsBttn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+        <i class="material-icons">add</i>
+      </button>
+    </div>
+    <div id="time_blocks_container"></div>
+    <!-- heating board-->
+    <div
+      id="heatingBoard"
+      class="progressBoard overlay-flex-wrapper"
+      style="background-color: rgba(0,0,0, 0.5)"
+    >
+    <div class="clock_display in-overlay"></div>
+      <div class="progressBoardContent">
+       
+        <div id="overlay-content" class="mdl-card custom">
+          <div
+            id="overlay-content-slots"
+            class="mdl-card custom"
+          ></div>
+          <div id="legend">
+            <p><span>&nbsp;</span>non-active pins</p>
+            <p><span class="active">&nbsp;</span>active pins</p>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <button
+              id="SaveAndClose"
+              class="mdl-button save"
+            >
+              <i class="material-icons pinkColor save">access_alarm</i>
+              <span class="save">&nbsp;Save && Close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end of heating board-->
+    <!-- absoluteFloaPins info -->
+    <div id="pinContainer" class="absoluteFloaPins"></div>
+    <!-- end of absoluteFloaPins info -->
+  </body>
 </html>
-
