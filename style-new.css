@@ -17,8 +17,8 @@ p {
 }
 
 .clock_container {
-  height: 400px;
-  width: 400px;
+  height: 200px;
+  width: 200px;
   background: #1b1e23;
   margin: 10px auto;
   font-family: sans-serif;
@@ -27,11 +27,13 @@ p {
 }
 
 .clock {
+  height: 100%;
+  width: 100%;
   border-radius: 100px;
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: 186px;
+  padding-top: 86px;
 }
 
 .clock__second,
@@ -80,6 +82,17 @@ p {
   background: none;
 }
 
+.clock__indicator:nth-of-type(n) {
+  height: 93px;
+  border-top: 7px solid #4b9aaa;
+}
+
+.clock__indicator:nth-of-type(3n) {
+  opacity: 1;
+  height: 93px;
+  border-top: 7px solid #f4eed7;
+}
+
 .clock__axis {
   background: #4b9aaa;
   width: 5px;
@@ -90,261 +103,394 @@ p {
   top: 97px;
 }
 
-.clock__indicator:nth-of-type(n) {
-  height: 200px;
-  border-top: 7px solid #4b9aaa;
-}
-
-.clock__indicator:nth-of-type(5n) {
-  opacity: 1;
-  height: 200px;
-  border-top: 7px solid #f4eed7;
-}
-
 section:nth-of-type(1) {
-  transform: rotateZ(calc(6deg * 1));
+  transform: rotateZ(calc(10deg * 1));
 }
 
 section:nth-of-type(2) {
-  transform: rotateZ(calc(6deg * 2));
+  transform: rotateZ(calc(10deg * 2));
 }
 
 section:nth-of-type(3) {
-  transform: rotateZ(calc(6deg * 3));
+  transform: rotateZ(calc(10deg * 3));
 }
 
 section:nth-of-type(4) {
-  transform: rotateZ(calc(6deg * 4));
+  transform: rotateZ(calc(10deg * 4));
 }
 
 section:nth-of-type(5) {
-  transform: rotateZ(calc(6deg * 5));
+  transform: rotateZ(calc(10deg * 5));
 }
 
 section:nth-of-type(6) {
-  transform: rotateZ(calc(6deg * 6));
+  transform: rotateZ(calc(10deg * 6));
 }
 
 section:nth-of-type(7) {
-  transform: rotateZ(calc(6deg * 7));
+  transform: rotateZ(calc(10deg * 7));
 }
 
 section:nth-of-type(8) {
-  transform: rotateZ(calc(6deg * 8));
+  transform: rotateZ(calc(10deg * 8));
 }
 
 section:nth-of-type(9) {
-  transform: rotateZ(calc(6deg * 9));
+  transform: rotateZ(calc(10deg * 9));
 }
 
 section:nth-of-type(10) {
-  transform: rotateZ(calc(6deg * 10));
+  transform: rotateZ(calc(10deg * 10));
 }
 
 section:nth-of-type(11) {
-  transform: rotateZ(calc(6deg * 11));
+  transform: rotateZ(calc(10deg * 11));
 }
 
 section:nth-of-type(12) {
-  transform: rotateZ(calc(6deg * 12));
+  transform: rotateZ(calc(10deg * 12));
 }
 
 section:nth-of-type(13) {
-  transform: rotateZ(calc(6deg * 13));
+  transform: rotateZ(calc(10deg * 13));
 }
 
 section:nth-of-type(14) {
-  transform: rotateZ(calc(6deg * 14));
+  transform: rotateZ(calc(10deg * 14));
 }
 
 section:nth-of-type(15) {
-  transform: rotateZ(calc(6deg * 15));
+  transform: rotateZ(calc(10deg * 15));
 }
 
 section:nth-of-type(16) {
-  transform: rotateZ(calc(6deg * 16));
+  transform: rotateZ(calc(10deg * 16));
 }
 
 section:nth-of-type(17) {
-  transform: rotateZ(calc(6deg * 17));
+  transform: rotateZ(calc(10deg * 17));
 }
 
 section:nth-of-type(18) {
-  transform: rotateZ(calc(6deg * 18));
+  transform: rotateZ(calc(10deg * 18));
 }
 
 section:nth-of-type(19) {
-  transform: rotateZ(calc(6deg * 19));
+  transform: rotateZ(calc(10deg * 19));
 }
 
 section:nth-of-type(20) {
-  transform: rotateZ(calc(6deg * 20));
+  transform: rotateZ(calc(10deg * 20));
 }
 
 section:nth-of-type(21) {
-  transform: rotateZ(calc(6deg * 21));
+  transform: rotateZ(calc(10deg * 21));
 }
 
 section:nth-of-type(22) {
-  transform: rotateZ(calc(6deg * 22));
+  transform: rotateZ(calc(10deg * 22));
 }
 
 section:nth-of-type(23) {
-  transform: rotateZ(calc(6deg * 23));
+  transform: rotateZ(calc(10deg * 23));
 }
 
 section:nth-of-type(24) {
-  transform: rotateZ(calc(6deg * 24));
+  transform: rotateZ(calc(10deg * 24));
 }
 
 section:nth-of-type(25) {
-  transform: rotateZ(calc(6deg * 25));
+  transform: rotateZ(calc(10deg * 25));
 }
 
 section:nth-of-type(26) {
-  transform: rotateZ(calc(6deg * 26));
+  transform: rotateZ(calc(10deg * 26));
 }
 
 section:nth-of-type(27) {
-  transform: rotateZ(calc(6deg * 27));
+  transform: rotateZ(calc(10deg * 27));
 }
 
 section:nth-of-type(28) {
-  transform: rotateZ(calc(6deg * 28));
+  transform: rotateZ(calc(10deg * 28));
 }
 
 section:nth-of-type(29) {
-  transform: rotateZ(calc(6deg * 29));
+  transform: rotateZ(calc(10deg * 29));
 }
 
 section:nth-of-type(30) {
-  transform: rotateZ(calc(6deg * 30));
+  transform: rotateZ(calc(10deg * 30));
 }
 
 section:nth-of-type(31) {
-  transform: rotateZ(calc(6deg * 31));
+  transform: rotateZ(calc(10deg * 31));
 }
 
 section:nth-of-type(32) {
-  transform: rotateZ(calc(6deg * 32));
+  transform: rotateZ(calc(10deg * 32));
 }
 
 section:nth-of-type(33) {
-  transform: rotateZ(calc(6deg * 33));
+  transform: rotateZ(calc(10deg * 33));
 }
 
 section:nth-of-type(34) {
-  transform: rotateZ(calc(6deg * 34));
+  transform: rotateZ(calc(10deg * 34));
 }
 
 section:nth-of-type(35) {
-  transform: rotateZ(calc(6deg * 35));
+  transform: rotateZ(calc(10deg * 35));
 }
 
 section:nth-of-type(36) {
-  transform: rotateZ(calc(6deg * 36));
+  transform: rotateZ(calc(10deg * 36));
 }
 
 section:nth-of-type(37) {
-  transform: rotateZ(calc(6deg * 37));
+  transform: rotateZ(calc(10deg * 37));
 }
 
 section:nth-of-type(38) {
-  transform: rotateZ(calc(6deg * 38));
+  transform: rotateZ(calc(10deg * 38));
 }
 
 section:nth-of-type(39) {
-  transform: rotateZ(calc(6deg * 39));
+  transform: rotateZ(calc(10deg * 39));
 }
 
 section:nth-of-type(40) {
-  transform: rotateZ(calc(6deg * 40));
+  transform: rotateZ(calc(10deg * 40));
 }
 
 section:nth-of-type(41) {
-  transform: rotateZ(calc(6deg * 41));
+  transform: rotateZ(calc(10deg * 41));
 }
 
 section:nth-of-type(42) {
-  transform: rotateZ(calc(6deg * 42));
+  transform: rotateZ(calc(10deg * 42));
 }
 
 section:nth-of-type(43) {
-  transform: rotateZ(calc(6deg * 43));
+  transform: rotateZ(calc(10deg * 43));
 }
 
 section:nth-of-type(44) {
-  transform: rotateZ(calc(6deg * 44));
+  transform: rotateZ(calc(10deg * 44));
 }
 
 section:nth-of-type(45) {
-  transform: rotateZ(calc(6deg * 45));
+  transform: rotateZ(calc(10deg * 45));
 }
 
 section:nth-of-type(46) {
-  transform: rotateZ(calc(6deg * 46));
+  transform: rotateZ(calc(10deg * 46));
 }
 
 section:nth-of-type(47) {
-  transform: rotateZ(calc(6deg * 47));
+  transform: rotateZ(calc(10deg * 47));
 }
 
 section:nth-of-type(48) {
-  transform: rotateZ(calc(6deg * 48));
+  transform: rotateZ(calc(10deg * 48));
 }
 
 section:nth-of-type(49) {
-  transform: rotateZ(calc(6deg * 49));
+  transform: rotateZ(calc(10deg * 49));
 }
 
 section:nth-of-type(50) {
-  transform: rotateZ(calc(6deg * 50));
+  transform: rotateZ(calc(10deg * 50));
 }
 
 section:nth-of-type(51) {
-  transform: rotateZ(calc(6deg * 51));
+  transform: rotateZ(calc(10deg * 51));
 }
 
 section:nth-of-type(52) {
-  transform: rotateZ(calc(6deg * 52));
+  transform: rotateZ(calc(10deg * 52));
 }
 
 section:nth-of-type(53) {
-  transform: rotateZ(calc(6deg * 53));
+  transform: rotateZ(calc(10deg * 53));
 }
 
 section:nth-of-type(54) {
-  transform: rotateZ(calc(6deg * 54));
+  transform: rotateZ(calc(10deg * 54));
 }
 
 section:nth-of-type(55) {
-  transform: rotateZ(calc(6deg * 55));
+  transform: rotateZ(calc(10deg * 55));
 }
 
 section:nth-of-type(56) {
-  transform: rotateZ(calc(6deg * 56));
+  transform: rotateZ(calc(10deg * 56));
 }
 
 section:nth-of-type(57) {
-  transform: rotateZ(calc(6deg * 57));
+  transform: rotateZ(calc(10deg * 57));
 }
 
 section:nth-of-type(58) {
-  transform: rotateZ(calc(6deg * 58));
+  transform: rotateZ(calc(10deg * 58));
 }
 
 section:nth-of-type(59) {
-  transform: rotateZ(calc(6deg * 59));
+  transform: rotateZ(calc(10deg * 59));
 }
 
 section:nth-of-type(60) {
-  transform: rotateZ(calc(6deg * 60));
+  transform: rotateZ(calc(10deg * 60));
+}
+
+section:nth-of-type(1) {
+  transform: rotateZ(10deg);
+}
+
+section:nth-of-type(2) {
+  transform: rotateZ(20deg);
+}
+
+section:nth-of-type(3) {
+  transform: rotateZ(30deg);
+}
+
+section:nth-of-type(4) {
+  transform: rotateZ(40deg);
+}
+
+section:nth-of-type(5) {
+  transform: rotateZ(50deg);
+}
+
+section:nth-of-type(6) {
+  transform: rotateZ(60deg);
+}
+
+section:nth-of-type(7) {
+  transform: rotateZ(70deg);
+}
+
+section:nth-of-type(8) {
+  transform: rotateZ(80deg);
+}
+
+section:nth-of-type(9) {
+  transform: rotateZ(90deg);
+}
+
+section:nth-of-type(10) {
+  transform: rotateZ(100deg);
+}
+
+section:nth-of-type(11) {
+  transform: rotateZ(110deg);
+}
+
+section:nth-of-type(12) {
+  transform: rotateZ(120deg);
+}
+
+section:nth-of-type(13) {
+  transform: rotateZ(130deg);
+}
+
+section:nth-of-type(14) {
+  transform: rotateZ(140deg);
+}
+
+section:nth-of-type(15) {
+  transform: rotateZ(150deg);
+}
+
+section:nth-of-type(16) {
+  transform: rotateZ(160deg);
+}
+
+section:nth-of-type(17) {
+  transform: rotateZ(170deg);
+}
+
+section:nth-of-type(18) {
+  transform: rotateZ(180deg);
+}
+
+section:nth-of-type(19) {
+  transform: rotateZ(190deg);
+}
+
+section:nth-of-type(20) {
+  transform: rotateZ(200deg);
+}
+
+section:nth-of-type(21) {
+  transform: rotateZ(210deg);
+}
+
+section:nth-of-type(22) {
+  transform: rotateZ(220deg);
+}
+
+section:nth-of-type(23) {
+  transform: rotateZ(230deg);
+}
+
+section:nth-of-type(24) {
+  transform: rotateZ(240deg);
+}
+
+section:nth-of-type(25) {
+  transform: rotateZ(250deg);
+}
+
+section:nth-of-type(26) {
+  transform: rotateZ(260deg);
+}
+
+section:nth-of-type(27) {
+  transform: rotateZ(270deg);
+}
+
+section:nth-of-type(28) {
+  transform: rotateZ(280deg);
+}
+
+section:nth-of-type(29) {
+  transform: rotateZ(290deg);
+}
+
+section:nth-of-type(30) {
+  transform: rotateZ(300deg);
+}
+
+section:nth-of-type(31) {
+  transform: rotateZ(310deg);
+}
+
+section:nth-of-type(32) {
+  transform: rotateZ(320deg);
+}
+
+section:nth-of-type(33) {
+  transform: rotateZ(330deg);
+}
+
+section:nth-of-type(34) {
+  transform: rotateZ(340deg);
+}
+
+section:nth-of-type(35) {
+  transform: rotateZ(350deg);
+}
+
+section:nth-of-type(36) {
+  transform: rotateZ(360deg);
 }
 
 /*time digits display*/
 .clock_display {
-  bottom: 165px;
-  left: 151px;
+  bottom: 17px;
+  left: 66px;
   color: wheat;
   font-family: digital;
   font-size: 4rem;
@@ -352,7 +498,8 @@ section:nth-of-type(60) {
 }
 
 .clock_display.in-overlay {
-  top: 100px;
+  top: 19px;
+  color: wheat;
 }
 
 /*time blocks*/
@@ -503,4 +650,4 @@ section:nth-of-type(60) {
 
 /****end overlay ***/
 
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=style-new.css.map */

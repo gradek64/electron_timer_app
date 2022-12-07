@@ -11,15 +11,16 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function getSecondsToday() {
-  let now = new Date();
-  let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  let diff = now - today;
-  return Math.round(diff / 1000);
-}
-
-
 window.addEventListener('DOMContentLoaded', () => {
+//Dome selection and manipulation
+const allTimeSotsContainer = document.getElementById('overlay-content-slots')
+const timeBlockContainer = document.getElementById('time_blocks_container');
+const clockMarksContainer = document.querySelector('.clock');
+const $every12minSlot = 12;
+const $slotsPerHour = 60 / $every12minSlot; 
+const $clockFaceHours = 12;
+const $allSlots = $slotsPerHour * $clockFaceHours; 
+
 
   /***** open overlay with time slots*****/
   const overlaySlotsBttn = document.getElementById('overlaySlotsBttn')
@@ -44,24 +45,22 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   })
-  
 
   /****** end of close overlay ******/
-
-
   //setting initial time
-  var currentSec = getSecondsToday();
-  //data
   const getHours12Format = () => new Date().getHours() % 12 || 12;
   const getMorningOrAfternoon = ()=> new Date().getHours() >= 12 ? 'PM':'AM'
   const getMins = () => new Date().getMinutes();
   const getMinsFormat = () => (getMins() < 10 ? `0${getMins()}` : getMins());
-  const minutesMapping = {
-    0: 0,
-    20: 1,
-    40: 2,
-    59: 3,
-  };
+
+  const checkCurrentTimeSlot= (asString = false) =>{
+    const foundClosestMinute = [0,12,24,36,48,59]
+      .reverse()
+      .find((slot) => slot <= getMins());
+    const formatMinutes = foundClosestMinute === 0 ? '00' : foundClosestMinute
+
+    return asString ? `${getHours12Format()}:${formatMinutes}`: Number(`${getHours12Format()}${formatMinutes}`)
+  }
 
   //------------clock digits display -----------//
 
@@ -79,35 +78,33 @@ window.addEventListener('DOMContentLoaded', () => {
     const timeSlots = activeTimeSlots.map(({slot})=>slot)
 
     for(i=0;i<timeSlots.length;i++){
-      debug('----currerent time -----::',timeInHoundreds)
-      debug('compare to :',Number(timeSlots[i]))
-      debug('timeInHoundreds % 20 === 0 ',!!timeInHoundreds % 20 === 0 )
-    
-      if(Number(timeSlots[i]) === timeInHoundreds ){
-        if(PinIsOn===false){
-          PinIsOn = true
-          debug('==== PIN is set ON ====')
-          break 
-        }
-        //break to not check rest of pins fo the batch
-        debug('==== PIN is still... set  ON====')
-        break
-      }
+      debug('::----current time -----::',timeInHoundreds)
+      debug('::----compares to ----::',Number(timeSlots[i]))
 
-      //chek every 20 mins
-      if(PinIsOn===true && timeInHoundreds % 20 === 0 ) {
-          PinIsOn = false
-          debug('PIN is set OFF')
-          break 
+      //first condition check upward only from the current time 
+      //so current time is 12:00 check 12:12 but don`t check 11 etc 
+  //TO DO
+      if(Number(timeSlots[i]) >= Number(`${getHours12Format()}${getMinsFormat()}`)){ 
+        console.log('Number(timeSlots[i]',Number(timeSlots[i]))
+        if(Number(timeSlots[i]) === checkCurrentTimeSlot()){
+
+          if(PinIsOn===false){
+            PinIsOn = true
+            debug('==== PIN is set ON ====', null,'green')
+            break 
+          }
+          //break to not check rest of pins fo the batch
+          debug('==== PIN is still... set ON from previous ON', null ,'green')
+          break
+        } else {
+          if(PinIsOn===true){
+            PinIsOn = false
+            debug('PIN is set OFF',null, 'red')
+            break
+          }
+          debug('==== PIN is still... set OFF from previous OFF', null ,'red')
+        }
       }
-      
-    if(PinIsOn===true){
-      debug('==== PIN is still... set  ON  from previous ON')
-    }else {
-      debug('==== PIN is still... set  OFF  from previous OFF')
-    }
-    
-     
     }
   }, 35000)
   //---------//
@@ -115,17 +112,10 @@ window.addEventListener('DOMContentLoaded', () => {
   let activeTimeSlots = [];
   let PinIsOn = false;
 
-  const minutesSlotsArray = Object.keys(minutesMapping)
-  const foundClosestMinute = minutesSlotsArray
-    .reverse()
-    .find((slot) => slot <= getMins());
-  const hoursInMinutesSlot = getHours12Format() * (minutesSlotsArray.length - 1);
-  const minutesAfterFullHourMap = minutesMapping[foundClosestMinute];
-  const timeBlockContainer = document.getElementById('time_blocks_container');
-
   const removeTimeSlot = (slot, slotToNumber) => {
     const indexToRemove = activeTimeSlots.findIndex((e) =>  e.slot === slotToNumber) 
     color = activeTimeSlots[indexToRemove].color
+
     //slice array before index and after index and combine
     activeTimeSlots = [
       ...activeTimeSlots.slice(0, indexToRemove),
@@ -164,7 +154,6 @@ window.addEventListener('DOMContentLoaded', () => {
       const currentClockMark = Array.from(clockMarkings).find(
         (mark) => mark.dataset.time === slot)
       
-
       const style = window.getComputedStyle(currentClockMark)
       const border = style.borderTop.match(/rgb.*/)
       currentClockMark.style.borderTop = '7px solid red';
@@ -173,14 +162,16 @@ window.addEventListener('DOMContentLoaded', () => {
           (block) => block.dataset.time === slot)
       currentBlock.style.background = '#3c47c0'
       currentBlock.style.color = 'rgb(244, 238, 215)'
+     
 
       const timeBlock = document.createElement('div');
       timeBlock.classList.add('time_blocks');
       activeTimeSlots.push({ slot: slotToNumber, color:border[0] });
-
-      debug('activeTimeSlots', activeTimeSlots);
+      //sort ascending
+      activeTimeSlots.sort((a, b) => a.slot - b.slot);
       timeBlock.innerHTML = slot;
-      //remove slot on click on it
+      
+      debug('activeTimeSlots', activeTimeSlots);
       timeBlock.addEventListener('click', () => {
         removeTimeSlot(slot,slotToNumber, e.target);
       });
@@ -188,7 +179,6 @@ window.addEventListener('DOMContentLoaded', () => {
       timeBlockContainer.appendChild(timeBlock);
     } else {
      removeTimeSlot(slot,slotToNumber);
-  
     }
   };
 
@@ -196,38 +186,27 @@ window.addEventListener('DOMContentLoaded', () => {
   let timeMinutes = 0;
 
   const setHour = (index) => {
-    // only till 12
-    if (timeHour >= 12) return 12;
-    // 0 and 1 return 0
-    if (index <= 1) return 12;
-    // every 3 bars increase time
-    if ((index + 1) % 3 === 0) timeHour++;
+    // increase hour by every $slotsPerHour
+    if ((index + 1) % $slotsPerHour === 0) timeHour++;
+    if (timeHour === 0 ) return 12;
 
     return timeHour;
   };
 
   const setSlotMinutes = (index) => {
     //every 1,2 increase by 20 minutes
-    if ((index + 1) % 3) {
-      timeMinutes += 20;
+    if ((index + 1) % $slotsPerHour) {
+      timeMinutes += $every12minSlot;
     } else {
       timeMinutes = 0;
     }
     return timeMinutes === 0 ? '00' : timeMinutes.toString();
   };
 
-  //current time selection
-  const actualTimeSection = document.querySelector(
-    `section:nth-of-type(${hoursInMinutesSlot + minutesAfterFullHourMap})`,
-  );
-  actualTimeSection.style.background = 'rgb(255,64,129)';
-  actualTimeSection.dataset.current = true
-  
-  //Dome selection and manipulation
-  const allTimeSotsContainer = document.getElementById('overlay-content-slots')
-  const allTimeSlots = document.querySelectorAll('.clock__indicator');
-  debug('allTimeSlots',allTimeSlots.length)
-  Array.from(allTimeSlots).map((timeSlot, index) => {
+  Array($allSlots).fill('').map((_,index) => {
+    const timeSlot = document.createElement('section')
+    timeSlot.classList.add('clock__indicator')
+    clockMarksContainer.appendChild(timeSlot)
 
     const minutes = setSlotMinutes(index);
     const hour = setHour(index);
@@ -241,11 +220,15 @@ window.addEventListener('DOMContentLoaded', () => {
       timeBlock.classList.add('selected');
     }
     timeBlock.innerHTML = timeSlot.dataset.time
-    allTimeSotsContainer.appendChild(timeBlock);
+    //highlight current time block 
+    if(`${hour}:${minutes}` === checkCurrentTimeSlot(true)){
+      timeBlock.style.background = 'rgb(255,64,129)'
+    }
 
+    allTimeSotsContainer.appendChild(timeBlock);
     //add listener
     timeSlot.addEventListener('click', selectTimeSlot);
-    timeBlock.addEventListener('click', selectTimeSlot);
+    timeBlock.addEventListener('click', selectTimeSlot); 
   
   });
 

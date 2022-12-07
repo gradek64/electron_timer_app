@@ -9,11 +9,12 @@
     },
     "scripts": {
         "start": "electron .",
-        "start:debug": "DEBUG=true electron ."
+        "sass":"sass --watch style.scss style.css",
+        "start:debug": "npm run sass & DEBUG=true electron ."
     },
     "devDependencies": {
         "chalk": "^4.1.0",
-        "electron": "^12.0.2"
-    },
-    "dependencies": {}
+        "electron": "^12.0.2",
+        "sass": "^1.56.1"
+    }
 }
