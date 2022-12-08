@@ -74,19 +74,24 @@ const $allSlots = $slotsPerHour * $clockFaceHours;
     clock_display_container[0].innerHTML = `<span>${getHours12Format()}:${getMinsFormat()}</span><span class='morning-afternoon'>${getMorningOrAfternoon()}</span>`;
     clock_display_container[1].innerHTML = `<span>${getHours12Format()}:${getMinsFormat()}</span><span class='morning-afternoon'>${getMorningOrAfternoon()}</span>`;
     //check if time matches the slot selected every 30s
-    const timeInHoundreds = Number(`${getHours12Format()}${getMinsFormat()}`)
+    const timeInHundreds = Number(`${getHours12Format()}${getMinsFormat()}`)
+    const currentTimeBlock = checkCurrentTimeSlot()
     const timeSlots = activeTimeSlots.map(({slot})=>slot)
 
-    for(i=0;i<timeSlots.length;i++){
-      debug('::----current time -----::',timeInHoundreds)
-      debug('::----compares to ----::',Number(timeSlots[i]))
+
+    //filter slots that smaller that current time
+    const BlocksUpwardsCurrentTimeBlock = timeSlots.filter((timeSlot)=>{
+      return timeSlot >= currentTimeBlock
+    })
+    debug('BlocksUpwardsCurrentTimeBlock',BlocksUpwardsCurrentTimeBlock)
+
+    for(i=0;i<BlocksUpwardsCurrentTimeBlock.length;i++){
+      debug('::----current time -----::',timeInHundreds)
+      debug('::----compares to ----::',BlocksUpwardsCurrentTimeBlock[i])
 
       //first condition check upward only from the current time 
       //so current time is 12:00 check 12:12 but don`t check 11 etc 
-  //TO DO
-      if(Number(timeSlots[i]) >= Number(`${getHours12Format()}${getMinsFormat()}`)){ 
-        console.log('Number(timeSlots[i]',Number(timeSlots[i]))
-        if(Number(timeSlots[i]) === checkCurrentTimeSlot()){
+      if(BlocksUpwardsCurrentTimeBlock[i] === currentTimeBlock){
 
           if(PinIsOn===false){
             PinIsOn = true
@@ -105,7 +110,20 @@ const $allSlots = $slotsPerHour * $clockFaceHours;
           debug('==== PIN is still... set OFF from previous OFF', null ,'red')
         }
       }
+
+  //once there are no slots bigger than current time continue with timer and set Pin OFF until loop continues 
+  //for next selected slide after 12 hour mark
+    if(BlocksUpwardsCurrentTimeBlock.length === 0){
+      debug('::----current time -----:: ',timeInHundreds)
+
+      if(PinIsOn===true){
+        PinIsOn = false
+        debug('PIN is set OFF',null, 'red')
+        return
+      }
+      debug('==== PIN is still... set OFF from previous OFF', null ,'red')
     }
+    
   }, 35000)
   //---------//
 
@@ -121,25 +139,23 @@ const $allSlots = $slotsPerHour * $clockFaceHours;
       ...activeTimeSlots.slice(0, indexToRemove),
       ...activeTimeSlots.slice(indexToRemove+1)
     ]
-    debug('activeTimeSlots', activeTimeSlots);
-
+  
     // set coloring
     const clockMarkings = document.querySelectorAll('.clock__indicator')
     const timeBlocks = document.querySelectorAll('.time_blocks')
 
-    const currentClockMark = Array.from(clockMarkings).find(
-      (mark) => mark.dataset.time === slot)
+    const currentClockMark = Array.from(clockMarkings).find((mark) => mark.dataset.time === slot)
     currentClockMark.style.borderTop = `7px solid ${color}`;
 
-    const currentBlock = Array.from(timeBlocks).find(
-        (block) => block.dataset.time === slot)
+    const currentBlock = Array.from(timeBlocks).find((block) => block.dataset.time === slot)
     currentBlock.style.background = 'rgb(207, 111, 143)'
     currentBlock.style.color = 'black'
     
     //remove selected block from front 
     const clickedSlot = document.querySelector("[data-slot='" + slot + "']");
     timeBlockContainer.removeChild(clickedSlot);
-   
+
+    debug('activeTimeSlots', activeTimeSlots);
   };
   const selectTimeSlot = (e) => {
     const slot = e.target.getAttribute('data-time');
@@ -151,31 +167,24 @@ const $allSlots = $slotsPerHour * $clockFaceHours;
       const clockMarkings = document.querySelectorAll('.clock__indicator')
       const timeBlocks = document.querySelectorAll('.time_blocks')
 
-      const currentClockMark = Array.from(clockMarkings).find(
-        (mark) => mark.dataset.time === slot)
-      
+      const currentClockMark = Array.from(clockMarkings).find((mark) => mark.dataset.time === slot)
       const style = window.getComputedStyle(currentClockMark)
       const border = style.borderTop.match(/rgb.*/)
       currentClockMark.style.borderTop = '7px solid red';
 
-      const currentBlock = Array.from(timeBlocks).find(
-          (block) => block.dataset.time === slot)
+      const currentBlock = Array.from(timeBlocks).find((block) => block.dataset.time === slot)
       currentBlock.style.background = '#3c47c0'
       currentBlock.style.color = 'rgb(244, 238, 215)'
-     
 
       const timeBlock = document.createElement('div');
       timeBlock.classList.add('time_blocks');
       activeTimeSlots.push({ slot: slotToNumber, color:border[0] });
-      //sort ascending
+      //sort slots ascending
       activeTimeSlots.sort((a, b) => a.slot - b.slot);
       timeBlock.innerHTML = slot;
-      
-      debug('activeTimeSlots', activeTimeSlots);
-      timeBlock.addEventListener('click', () => {
-        removeTimeSlot(slot,slotToNumber, e.target);
-      });
       timeBlock.setAttribute('data-slot', slot);
+      timeBlock.addEventListener('click', () => removeTimeSlot(slot,slotToNumber, e.target));
+
       timeBlockContainer.appendChild(timeBlock);
     } else {
      removeTimeSlot(slot,slotToNumber);
