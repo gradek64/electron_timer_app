@@ -16,6 +16,13 @@ p {
   opacity: 0.75;
 }
 
+.clock_pi {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  background-color: rgb(109, 10, 95);
+}
+
 .clock_container {
   height: 400px;
   width: 400px;
@@ -356,19 +363,23 @@ section:nth-of-type(60) {
 }
 
 /*time blocks*/
-#overlay-content-slots, #time_blocks_container {
+#overlay-content-slots,
+#time_blocks_container {
   width: 90%;
+  height: 30px;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  overflow: auto;
 }
 
 #overlay-content {
   border: 2px inset #9c7e7e;
 }
 
-#overlay-content, #overlay-content-slots {
+#overlay-content,
+#overlay-content-slots {
   background: #367d70;
 }
 
@@ -450,6 +461,11 @@ section:nth-of-type(60) {
     transform: rotate(360deg) scale(x);
   }
 }
+/***  overlay close Pie***/
+#closePie {
+  display: none;
+}
+
 /***  overlay ***/
 .mdl-card.custom {
   width: 76%;
@@ -480,8 +496,27 @@ section:nth-of-type(60) {
   align-items: center;
 }
 
-.progressBoardContent .contentBoard div {
+.progressBoardContent.contentBoard div {
   margin-right: 10px;
+}
+.progressBoardContent.contentBoard .closeOverlay {
+  border: 5px inset green;
+  padding: 30px 10px;
+  background-color: seashell;
+}
+.progressBoardContent.contentBoard .closeOverlay h5 {
+  color: hotpink;
+}
+.progressBoardContent.contentBoard .closeOverlay div.buttons {
+  padding: 30px 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.progressBoardContent.contentBoard .closeOverlay div.buttons button:first-child {
+  background-color: green;
+}
+.progressBoardContent.contentBoard .closeOverlay div.buttons button:last-child {
+  background-color: hotpink;
 }
 
 .progressBoardContent .contentBoard div h5 {

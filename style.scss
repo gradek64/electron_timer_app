@@ -1,255 +1,299 @@
 @font-face {
-    font-family: digital;
-    src: url(./fonts/digital-7.ttf);
-  }
+  font-family: digital;
+  src: url(./fonts/digital-7.ttf);
+}
 
-  $angle: '6deg';
-  $clockSize: 200;
-  $every12minSlot:12;
-  $slotsPerHour:60 / $every12minSlot; 
-  $clockFaceHours:12;
-  $clockFaceContainerSize: 2 * $clockSize;
-  $allSlots: $slotsPerHour * $clockFaceHours; 
+$angle: "6deg";
+$clockSize: 200;
+$every12minSlot: 12;
+$slotsPerHour: 60 / $every12minSlot;
+$clockFaceHours: 12;
+$clockFaceContainerSize: 2 * $clockSize;
+$allSlots: $slotsPerHour * $clockFaceHours;
 
+html,
+body {
+  height: 100%;
+  background: #1b1e23;
+  margin: 0;
+  overflow: hidden;
+}
 
-  html,
-  body {
-    height: 100%;
-    background: #1b1e23;
-    margin:0;
-    overflow: hidden;
-  }
-  
-  p {
-    color: #f4eed7;
-    font-size: 0.8em;
-    opacity: 0.75;
-  }
+p {
+  color: #f4eed7;
+  font-size: 0.8em;
+  opacity: 0.75;
+}
 
-  .clock_container {
-    height: #{$clockFaceContainerSize}px;
-    width: #{$clockFaceContainerSize}px;
-    background: #1b1e23;
-    margin: 10px auto;
-    font-family: sans-serif;
-    color: white;
-    position: relative;
-  }
-  .clock {
-    border-radius: 100px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin-top: 186px;
-  }
-  .clock__second,
-  .clock__minute,
-  .clock__hour,
-  .clock__indicator {
-    position: absolute;
-    left: calc(50% - 1px);
-    width: 2px;
-    background: #f4eed7;
-    transform-origin: bottom center;
-    z-index: 2;
-    border-radius: 1px;
-  }
-  .clock__second {
-    height: 90px;
-    margin-top: 10px;
-    background: #4b9aaa;
-    -webkit-animation: time 60s infinite steps(60);
-    animation: time 60s infinite steps(60);
-    z-index: 3;
-  }
-  .clock__minute {
-    height: 80px;
-    margin-top: 20px;
-    opacity: 0.75;
-    -webkit-animation: time 3600s linear infinite;
-    animation: time 3600s linear infinite;
-  }
-  .clock__hour {
-    height: 60px;
-    margin-top: 40px;
-    -webkit-animation: time 43200s linear infinite;
-    animation: time 43200s linear infinite;
-  }
-  .clock__indicator {
-    height: 98px;
-    width: 6px;
-    border-radius: 9px;
-    width: 3px;
-    border-top: 2px solid #4b9aaa;
-    background: none;
-  }
+.clock_pi {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  background-color: rgb(109, 10, 95);
+}
 
-  .clock__axis {
-    background: #4b9aaa;
-    width: 5px;
-    height: 5px;
-    border-radius: 3px;
-    position: absolute;
-    z-index: 4;
-    top: 97px;
-  }
-  
+.clock_container {
+  height: #{$clockFaceContainerSize}px;
+  width: #{$clockFaceContainerSize}px;
+  background: #1b1e23;
+  margin: 10px auto;
+  font-family: sans-serif;
+  color: white;
+  position: relative;
+}
+.clock {
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 186px;
+}
+.clock__second,
+.clock__minute,
+.clock__hour,
+.clock__indicator {
+  position: absolute;
+  left: calc(50% - 1px);
+  width: 2px;
+  background: #f4eed7;
+  transform-origin: bottom center;
+  z-index: 2;
+  border-radius: 1px;
+}
+.clock__second {
+  height: 90px;
+  margin-top: 10px;
+  background: #4b9aaa;
+  -webkit-animation: time 60s infinite steps(60);
+  animation: time 60s infinite steps(60);
+  z-index: 3;
+}
+.clock__minute {
+  height: 80px;
+  margin-top: 20px;
+  opacity: 0.75;
+  -webkit-animation: time 3600s linear infinite;
+  animation: time 3600s linear infinite;
+}
+.clock__hour {
+  height: 60px;
+  margin-top: 40px;
+  -webkit-animation: time 43200s linear infinite;
+  animation: time 43200s linear infinite;
+}
+.clock__indicator {
+  height: 98px;
+  width: 6px;
+  border-radius: 9px;
+  width: 3px;
+  border-top: 2px solid #4b9aaa;
+  background: none;
+}
 
-  .clock__indicator:nth-of-type(n) {
-    height: #{$clockSize}px;
-    border-top: 7px solid #4b9aaa;
-  }
+.clock__axis {
+  background: #4b9aaa;
+  width: 5px;
+  height: 5px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 4;
+  top: 97px;
+}
 
-  .clock__indicator:nth-of-type(#{$slotsPerHour}n) {
-    opacity: 1;
-    height: #{$clockSize}px;
-    border-top: 7px solid #f4eed7;
-  }
+.clock__indicator:nth-of-type(n) {
+  height: #{$clockSize}px;
+  border-top: 7px solid #4b9aaa;
+}
 
-  @for $i from 1 through $allSlots {
-    section:nth-of-type(#{$i}) {
-      transform: rotateZ(calc(#{$angle} * #{$i}));
-    }
-  }
+.clock__indicator:nth-of-type(#{$slotsPerHour}n) {
+  opacity: 1;
+  height: #{$clockSize}px;
+  border-top: 7px solid #f4eed7;
+}
 
-  /*time digits display*/
-  .clock_display {
-    bottom: 165px;
-    left: 151px;
-    color: wheat;
-    font-family: digital;
-    font-size: 4rem;
-    position: absolute;
+@for $i from 1 through $allSlots {
+  section:nth-of-type(#{$i}) {
+    transform: rotateZ(calc(#{$angle} * #{$i}));
   }
-  .clock_display.in-overlay {
-    top:100px;
+}
+
+/*time digits display*/
+.clock_display {
+  bottom: 165px;
+  left: 151px;
+  color: wheat;
+  font-family: digital;
+  font-size: 4rem;
+  position: absolute;
+}
+.clock_display.in-overlay {
+  top: 100px;
+}
+/*time blocks*/
+#overlay-content-slots,
+#time_blocks_container {
+  width: 90%;
+  height: 30px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: auto;
+}
+#overlay-content {
+  border: 2px inset #9c7e7e;
+}
+#overlay-content,
+#overlay-content-slots {
+  background: #367d70;
+}
+#legend p {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  text-align: justify;
+}
+#legend p span {
+  display: inline-block;
+  width: 20px;
+  height: 12px;
+  background-color: #cf6f8f;
+  line-height: 12px;
+  margin: 10px;
+}
+#legend p span.active {
+  background-color: #3c47c0;
+}
+
+#overlay-content-slots .time_blocks,
+#time_blocks_container .time_blocks {
+  border: 1px solid #5e3636;
+  background: rgb(207, 111, 143);
+  border-radius: 10%;
+  padding: 5px;
+  margin: 5px;
+  cursor: pointer;
+}
+#overlay-content-slots .time_blocks.selected {
+  background: orchid;
+}
+
+.morning-afternoon {
+  font-size: 15px;
+}
+/*button container flex*/
+#set-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 110px;
+}
+
+/******** absolute Float Pins Info*******/
+.absoluteFloaPins {
+  background-color: #6dab8b;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+  height: 34px;
+}
+/******** absolute Floa Pins Info*******/
+
+@-webkit-keyframes time {
+  to {
+    transform: rotateZ(360deg);
   }
-  /*time blocks*/
-  #overlay-content-slots,#time_blocks_container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+}
+
+@keyframes time {
+  to {
+    transform: rotateZ(360deg);
   }
-  #overlay-content {
-    border:2px inset #9c7e7e
+}
+
+@keyframes spinning-cog {
+  0% {
+    transform: rotate(0deg) scale(x);
   }
-  #overlay-content, #overlay-content-slots {
-    background: #367d70;
+  20% {
+    transform: rotate(-45deg) scale(x);
   }
-  #legend p{
-    margin:0;
-    padding: 0;
-    font-size: 16px;
-    text-align:  justify;
+  100% {
+    transform: rotate(360deg) scale(x);
   }
-  #legend p span{
-    display: inline-block;
-    width: 20px;
-    height: 12px;
-    background-color: #cf6f8f;
-    line-height: 12px;
-    margin: 10px;
-  }
-  #legend p span.active{
-    background-color: #3c47c0;
-  }
-  
-  #overlay-content-slots .time_blocks,
-  #time_blocks_container .time_blocks {
-    border: 1px solid #5e3636;
-    background: rgb(207, 111, 143);
-    border-radius: 10%;
-    padding: 5px;
-    margin: 5px;
-    cursor: pointer;
-  }
-  #overlay-content-slots .time_blocks.selected {
-    background:orchid;
-  }
-  
-  .morning-afternoon {
-    font-size: 15px;
-  }
-  /*button container flex*/
-  #set-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 110px;
-  }
-  
-  /******** absolute Float Pins Info*******/
-  .absoluteFloaPins {
-    background-color: #6dab8b;
-    display: flex;
-    position: absolute;
-    bottom: 0;
-    z-index: 100;
-    height:34px;
-  }
-  /******** absolute Floa Pins Info*******/
-  
-  @-webkit-keyframes time {
-    to {
-      transform: rotateZ(360deg);
-    }
-  }
-  
-  @keyframes time {
-    to {
-      transform: rotateZ(360deg);
-    }
-  }
-  
-  @keyframes spinning-cog {
-    0% { transform: rotate(0deg) scale(x)}
-    20% { transform: rotate(-45deg) scale(x)}
-    100% { transform: rotate(360deg) scale(x)}
-  }
-  
-  /***  overlay ***/
-  .mdl-card.custom {
-    width: 76%;
-    padding: 10px;
-  }
-  .progressBoard {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    display: none;
-    z-index: 2;
-  }
-  .progressBoardContent {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-  .progressBoardContent .contentBoard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .progressBoardContent .contentBoard div {
+}
+
+/***  overlay close Pie***/
+
+#closePie {
+  display: none;
+}
+
+/***  overlay ***/
+.mdl-card.custom {
+  width: 76%;
+  padding: 10px;
+}
+.progressBoard {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  display: none;
+  z-index: 2;
+}
+.progressBoardContent {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.progressBoardContent .contentBoard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.progressBoardContent.contentBoard {
+  div {
     margin-right: 10px;
   }
-  .progressBoardContent .contentBoard div h5 {
-    display: flex;
-    font-size: 1rem;
-    align-items: center;
-    justify-content: center;
+  .closeOverlay {
+    border: 5px inset green;
+    padding: 30px 10px;
+    background-color: seashell;
+    h5 {
+      color: hotpink;
+    }
+    div.buttons {
+      padding: 30px 10px 10px 10px;
+      display: flex;
+      justify-content: space-between;
+
+      button:first-child {
+        background-color: green;
+      }
+      button:last-child {
+        background-color: hotpink;
+      }
+    }
   }
-  .progressBoardContent .contentBoard div,
-  .progressBoardContent .contentBoard p {
-    text-align: center;
-  }
-  .progressBoardContent img {
-    width: 40%;
-    height: auto;
-  }
-  /****end overlay ***/
+}
+.progressBoardContent .contentBoard div h5 {
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.progressBoardContent .contentBoard div,
+.progressBoardContent .contentBoard p {
+  text-align: center;
+}
+.progressBoardContent img {
+  width: 40%;
+  height: auto;
+}
+
+/****end overlay ***/

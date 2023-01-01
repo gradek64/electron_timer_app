@@ -503,7 +503,8 @@ section:nth-of-type(36) {
 }
 
 /*time blocks*/
-#overlay-content-slots, #time_blocks_container {
+#overlay-content-slots,
+#time_blocks_container {
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -515,7 +516,8 @@ section:nth-of-type(36) {
   border: 2px inset #9c7e7e;
 }
 
-#overlay-content, #overlay-content-slots {
+#overlay-content,
+#overlay-content-slots {
   background: #367d70;
 }
 

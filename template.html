@@ -20,14 +20,21 @@
   <!-- material-ui icons name searchhttps://fonts.google.com/icons?selected=Material+Icons -->
 
   <body class="main-bg-color">
+    <div class="clock_pi">
+      <button id="overlayClosePi" class="mdl-button">
+        <i class="material-icons pinkColor">power_settings_new</i>
+        <span>&nbsp;close pie</span>
+      </button>
+    </div>
     <div class="clock_container">
       <div class="clock_display"></div>
-      <div class="clock">
-        
-      </div>
+      <div class="clock"></div>
     </div>
     <div id="set-button-container">
-      <button id="overlaySlotsBttn" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+      <button
+        id="overlaySlotsBttn"
+        class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored"
+      >
         <i class="material-icons">add</i>
       </button>
     </div>
@@ -36,30 +43,46 @@
     <div
       id="heatingBoard"
       class="progressBoard overlay-flex-wrapper"
-      style="background-color: rgba(0,0,0, 0.5)"
+      style="background-color: rgba(0, 0, 0, 0.5)"
     >
-    <div class="clock_display in-overlay"></div>
-      <div class="progressBoardContent">
-       
+      <div class="clock_display in-overlay"></div>
+      <div class="progressBoardContent contentBoard">
         <div id="overlay-content" class="mdl-card custom">
-          <div
-            id="overlay-content-slots"
-            class="mdl-card custom"
-          ></div>
+          <div id="overlay-content-slots" class="mdl-card custom"></div>
           <div id="legend">
             <p><span>&nbsp;</span>non-active pins</p>
             <p><span class="active">&nbsp;</span>active pins</p>
           </div>
           <div class="mdl-card__actions mdl-card--border">
-            <button
-              id="SaveAndClose"
-              class="mdl-button save"
-            >
-              <i class="material-icons pinkColor save">access_alarm</i>
-              <span class="save">&nbsp;Save && Close</span>
+            <button id="SaveAndClose" class="mdl-button save">
+              <i class="material-icons pinkColor">access_alarm</i>
+              <span class="save">&nbsp;save && close</span>
             </button>
           </div>
         </div>
+      </div>
+    </div>
+    <div
+      id="closePie"
+      class="progressBoard overlay-flex-wrapper"
+      style="background-color: rgba(0, 0, 0, 0.5)"
+    >
+      <div class="clock_display in-overlay"></div>
+      <div class="progressBoardContent contentBoard">
+      <div class="closeOverlay">
+        <h5>Are you sure you want to shut down Raspberry Pi ?</h5>
+        <div class="buttons">
+            <button id="SaveAndClose" class="mdl-button mdl-js-button mdl-button--raised">
+              <i class="material-icons pinkColor">power_settings_new</i>
+              <span >&nbsp;confirm</span>
+            </button>
+            <button id="SaveAndClose" class="mdl-button mdl-js-button mdl-button--raised">
+              <i class="material-icons pinkColor">not_interested</i>
+              <span class="save">&nbsp;cancel</span>
+            </button>
+        </div>
+        </div>
+      </div>
       </div>
     </div>
     <!--end of heating board-->
