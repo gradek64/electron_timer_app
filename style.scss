@@ -4,9 +4,9 @@
 }
 
 $angle: "6deg";
-$clockSize: 200;
+$clockSize: 150;
 $every12minSlot: 12;
-$slotsPerHour: 60 / $every12minSlot;
+$slotsPerHour: calc(60 / $every12minSlot);
 $clockFaceHours: 12;
 $clockFaceContainerSize: 2 * $clockSize;
 $allSlots: $slotsPerHour * $clockFaceHours;
@@ -30,23 +30,28 @@ p {
   right: 0;
   top: 10%;
   background-color: rgb(109, 10, 95);
+
+  button {
+    color: #90a571;
+  }
 }
 
 .clock_container {
   height: #{$clockFaceContainerSize}px;
   width: #{$clockFaceContainerSize}px;
   background: #1b1e23;
-  margin: 10px auto;
+  margin: 10px auto 25px auto;
   font-family: sans-serif;
   color: white;
   position: relative;
 }
 .clock {
+  margin-top: 20px;
+  margin-bottom: 10px;
   border-radius: 100px;
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: 186px;
 }
 .clock__second,
 .clock__minute,
@@ -119,21 +124,21 @@ p {
 
 /*time digits display*/
 .clock_display {
-  bottom: 165px;
-  left: 151px;
+  bottom: 116px;
+  left: 120px;
   color: wheat;
   font-family: digital;
   font-size: 4rem;
   position: absolute;
 }
 .clock_display.in-overlay {
-  top: 100px;
+  top: 28px;
+  left: 38px;
 }
 /*time blocks*/
 #overlay-content-slots,
 #time_blocks_container {
-  width: 90%;
-  height: 30px;
+  width: 98%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -146,6 +151,7 @@ p {
 #overlay-content,
 #overlay-content-slots {
   background: #367d70;
+  height: 420px;
 }
 #legend p {
   margin: 0;
@@ -183,10 +189,9 @@ p {
 }
 /*button container flex*/
 #set-button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 110px;
+  position: absolute;
+  top: 150px;
+  left: 150px;
 }
 
 /******** absolute Float Pins Info*******/
@@ -195,6 +200,7 @@ p {
   display: flex;
   position: absolute;
   bottom: 0;
+  right: 0;
   z-index: 100;
   height: 34px;
 }

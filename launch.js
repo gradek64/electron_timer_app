@@ -1,19 +1,20 @@
 const { app, BrowserWindow } = require("electron")
 const path = require("path")
+const { debug } = require("./debug")
 
-console.log("process.env in launch", process.env.DEBUG)
+debug("process.env.DEBUG set =>", process.env.DEBUG, "green")
 
 function createWindow() {
   const win = new BrowserWindow({
     width: 800,
-    height: 600,
+    height: 480, //800x480 is resolution of the touch screen
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
   })
   //ren dev tool only in debug mode
-  if (process.env.DEBUG) {
+  if (process.env.DEBUG === "true") {
     win.webContents.openDevTools()
   }
 

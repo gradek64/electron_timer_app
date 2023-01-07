@@ -38,10 +38,10 @@ window.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".overlay-flex-wrapper") || null
 
   /****** close overlay ******/
-  const saveAndCloseBtton = document.getElementById("SaveAndClose")
+  const saveAndCloseButton = document.getElementById("SaveAndClose")
 
   const closingElements = [
-    saveAndCloseBtton,
+    saveAndCloseButton,
     outsideOverlay[0],
     outsideOverlay[1],
   ]
@@ -51,7 +51,6 @@ window.addEventListener("DOMContentLoaded", () => {
         e.target.classList.contains("progressBoardContent") ||
         e.target.classList.contains("save")
       ) {
-        console.log(e.target.className)
         if (document.querySelector("#closePie"))
           document.querySelector("#closePie").style.display = "none"
         if (document.querySelector("#heatingBoard"))
