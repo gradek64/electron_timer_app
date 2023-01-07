@@ -1,4 +1,6 @@
 const { debug } = require("./debug")
+const { setPins } = require("./configs/config")
+const { turnPins } = require("./setGpioPinsOn_Off")
 
 window.addEventListener("DOMContentLoaded", () => {
   const replaceText = (selector, text) => {
@@ -109,6 +111,7 @@ window.addEventListener("DOMContentLoaded", () => {
       if (BlocksUpwardsCurrentTimeBlock[i] === currentTimeBlock) {
         if (PinIsOn === false) {
           PinIsOn = true
+          turnPins({ LOW_HIGH: "HIGH" })
           debug("==== PIN is set ON ====", null, "green")
           break
         }
@@ -118,6 +121,7 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         if (PinIsOn === true) {
           PinIsOn = false
+          turnPins({ LOW_HIGH: "LOW" })
           debug("PIN is set OFF", null, "red")
           break
         }
@@ -132,6 +136,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       if (PinIsOn === true) {
         PinIsOn = false
+        turnPins({ LOW_HIGH: "LOW" })
         debug("PIN is set OFF", null, "red")
         return
       }
@@ -268,7 +273,7 @@ window.addEventListener("DOMContentLoaded", () => {
     })
 
   //show what pin/pins are on
-  const inputPins = [{ setup: "OUTPUT", pinNumber: 24 }]
+  const inputPins = setPins.timer
   const PinsContainer = document.getElementById("pinContainer")
   inputPins.forEach(({ pinNumber }) => {
     const pin = document.createElement("div")

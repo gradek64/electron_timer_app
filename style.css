@@ -517,7 +517,10 @@ section:nth-of-type(60) {
   display: flex;
   justify-content: space-between;
 }
-.progressBoardContent.contentBoard .closeOverlay div.buttons button:first-child {
+.progressBoardContent.contentBoard
+  .closeOverlay
+  div.buttons
+  button:first-child {
   background-color: green;
 }
 .progressBoardContent.contentBoard .closeOverlay div.buttons button:last-child {

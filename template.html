@@ -20,16 +20,19 @@
   <!-- material-ui icons name searchhttps://fonts.google.com/icons?selected=Material+Icons -->
 
   <body class="main-bg-color">
+    <!-- -->
     <div class="clock_pi">
       <button id="overlayClosePi" class="mdl-button">
         <i class="material-icons pinkColor">power_settings_new</i>
         <span>&nbsp;close pie</span>
       </button>
     </div>
+    <!-- -->
     <div class="clock_container">
       <div class="clock_display"></div>
       <div class="clock"></div>
     </div>
+    <!-- -->
     <div id="set-button-container">
       <button
         id="overlaySlotsBttn"
@@ -38,6 +41,7 @@
         <i class="material-icons">add</i>
       </button>
     </div>
+    <!-- -->
     <div id="time_blocks_container"></div>
     <!-- heating board-->
     <div
@@ -62,6 +66,7 @@
         </div>
       </div>
     </div>
+    <!-- -->
     <div
       id="closePie"
       class="progressBoard overlay-flex-wrapper"
@@ -69,22 +74,28 @@
     >
       <div class="clock_display in-overlay"></div>
       <div class="progressBoardContent contentBoard">
-      <div class="closeOverlay">
-        <h5>Are you sure you want to shut down Raspberry Pi ?</h5>
-        <div class="buttons">
-            <button id="SaveAndClose" class="mdl-button mdl-js-button mdl-button--raised">
+        <div class="closeOverlay">
+          <h5>Are you sure you want to shut down Raspberry Pi ?</h5>
+          <div class="buttons">
+            <button
+              id="SaveAndClose"
+              class="mdl-button mdl-js-button mdl-button--raised"
+            >
               <i class="material-icons pinkColor">power_settings_new</i>
-              <span >&nbsp;confirm</span>
+              <span>&nbsp;confirm</span>
             </button>
-            <button id="SaveAndClose" class="mdl-button mdl-js-button mdl-button--raised">
+            <button
+              id="SaveAndClose"
+              class="mdl-button mdl-js-button mdl-button--raised"
+            >
               <i class="material-icons pinkColor">not_interested</i>
               <span class="save">&nbsp;cancel</span>
             </button>
+          </div>
         </div>
-        </div>
-      </div>
       </div>
     </div>
+    <!-- -->
     <!--end of heating board-->
     <!-- absoluteFloaPins info -->
     <div id="pinContainer" class="absoluteFloaPins"></div>
