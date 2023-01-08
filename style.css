@@ -2,6 +2,18 @@
   font-family: digital;
   src: url(./fonts/digital-7.ttf);
 }
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid darkslategray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: darkslategray;
+}
+
 html,
 body {
   height: 100%;
@@ -380,6 +392,7 @@ section:nth-of-type(60) {
 
 #overlay-content {
   border: 2px inset #9c7e7e;
+  width: 70%;
 }
 
 #overlay-content,
@@ -416,6 +429,11 @@ section:nth-of-type(60) {
   padding: 5px;
   margin: 5px;
   cursor: pointer;
+}
+
+#time_blocks_container {
+  height: 50px;
+  overflow: auto;
 }
 
 #overlay-content-slots .time_blocks.selected {
@@ -517,10 +535,7 @@ section:nth-of-type(60) {
   display: flex;
   justify-content: space-between;
 }
-.progressBoardContent.contentBoard
-  .closeOverlay
-  div.buttons
-  button:first-child {
+.progressBoardContent.contentBoard .closeOverlay div.buttons button:first-child {
   background-color: green;
 }
 .progressBoardContent.contentBoard .closeOverlay div.buttons button:last-child {

@@ -19,7 +19,8 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
-    "rpio": "^2.4.2"
+    "rpio": "^2.4.2",
+    "shelljs": "0.7.5"
   },
   "devDependencies": {
     "chalk": "4.1.0",
@@ -30,5 +31,17 @@
     "sass": "1.56.1",
     "electron-builder": "23.6.0",
     "electron-rebuild": "3.2.7"
+  },
+  "build": {
+    "appId": "timerApp_001",
+    "productName": "Time-me-up",
+    "linux": {
+      "category": "Science",
+      "target": {
+        "target": "AppImage",
+        "arch": "armv7l"
+      }
+    },
+    "includeSubNodeModules": true
   }
 }

@@ -7,15 +7,21 @@ let previouslySet
 //pins for timer
 const { setPins } = require("./configs/config")
 const timer_pins = setPins.timer
+global.setLow = true
 
 /*
  * Set the initial state to low.  The state is set prior to the pin
  * being actived, so is safe for devices which require a stable setup.
  */
 
-const turnPins = ({ LOW_HIGH }) => {
+const turnPins = ({ LOW_HIGH }, done) => {
   timer_pins.forEach(({ pinNumber, setup }, index) => {
     if (LOW_HIGH === "HIGH") {
+      if (global.setLow === false) {
+        if (done) done()
+        return
+      }
+      global.setLow = false
       debug(`pin ${pinNumber} turned: ${LOW_HIGH}`, "blue")
       //pins are defined
       if (rpio.LOW || rpio.HIGH) {
@@ -23,8 +29,15 @@ const turnPins = ({ LOW_HIGH }) => {
         rpio.write(pinNumber, rpio[LOW_HIGH])
         //display pin on
         showActiveNonActivePin({ pinNumber })
+        //callback for other methods to start
+        if (done) done()
       }
     } else if (LOW_HIGH === "LOW") {
+      if (global.setLow === true) {
+        if (done) done()
+        return
+      }
+      global.setLow = true
       debug(`pin ${pinNumber} turned: ${LOW_HIGH}`, "blue")
       //pins are defined
       if (rpio.LOW || rpio.HIGH) {
@@ -33,6 +46,8 @@ const turnPins = ({ LOW_HIGH }) => {
           rpio.write(pinNumber, rpio[LOW_HIGH])
           //display pin off
           showActiveNonActivePin({ pinNumber })
+          //callback for other methods to start
+          if (done) done()
         } catch (error) {
           debug(error)
         }

@@ -1,3 +1,4 @@
+const shell = require("shelljs")
 const { debug } = require("./debug")
 const { setPins } = require("./configs/config")
 const { turnPins } = require("./setGpioPinsOn_Off")
@@ -23,6 +24,17 @@ window.addEventListener("DOMContentLoaded", () => {
   const $clockFaceHours = 12
   const $allSlots = $slotsPerHour * $clockFaceHours
 
+  /***** close Pi button *****/
+  const closePieButton = document.getElementById("closePieButton")
+  closePieButton.addEventListener("click", () => {
+    turnPins({ LOW_HIGH: "LOW" }, () => {
+      //callback is ready
+      const delay = setTimeout(() => {
+        clearInterval(delay)
+        shell.exec("sudo poweroff")
+      }, 1000)
+    })
+  })
   /***** open overlay to close Pi all together*****/
   const overlayClosePi = document.getElementById("overlayClosePi")
   overlayClosePi.addEventListener("click", () => {

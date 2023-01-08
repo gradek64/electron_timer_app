@@ -11,6 +11,18 @@ $clockFaceHours: 12;
 $clockFaceContainerSize: 2 * $clockSize;
 $allSlots: $slotsPerHour * $clockFaceHours;
 
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid darkslategray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: darkslategray;
+}
+
 html,
 body {
   height: 100%;
@@ -147,6 +159,7 @@ p {
 }
 #overlay-content {
   border: 2px inset #9c7e7e;
+  width: 70%;
 }
 #overlay-content,
 #overlay-content-slots {
@@ -180,6 +193,11 @@ p {
   margin: 5px;
   cursor: pointer;
 }
+#time_blocks_container {
+  height: 50px;
+  overflow: auto;
+}
+
 #overlay-content-slots .time_blocks.selected {
   background: orchid;
 }
