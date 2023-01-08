@@ -145,7 +145,7 @@ p {
 }
 .clock_display.in-overlay {
   top: 28px;
-  left: 38px;
+  left: 20px;
 }
 /*time blocks*/
 #overlay-content-slots,
@@ -164,7 +164,7 @@ p {
 #overlay-content,
 #overlay-content-slots {
   background: #367d70;
-  height: 420px;
+  height: 380px;
 }
 #legend p {
   margin: 0;
@@ -194,7 +194,7 @@ p {
   cursor: pointer;
 }
 #time_blocks_container {
-  height: 50px;
+  height: 120px;
   overflow: auto;
 }
 

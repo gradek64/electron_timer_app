@@ -14,6 +14,7 @@
     "===>": "after fresh packages are installed 'npm i' run npm rubuild for electron to update",
     "rebuild": "electron-rebuild -f -w rpio",
     "build": "electron-builder",
+    "app-image": "chmod +x dist/Time-me-up-0.1.0-armv7l.AppImage && ./dist/Time-me-up-0.1.0-armv7l.AppImage",
     "postinstall": "electron-builder install-app-deps",
     "==> format": "format after save does not work so at least run all files to format",
     "format": "npx prettier --write ."

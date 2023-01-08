@@ -376,7 +376,7 @@ section:nth-of-type(60) {
 
 .clock_display.in-overlay {
   top: 28px;
-  left: 38px;
+  left: 20px;
 }
 
 /*time blocks*/
@@ -398,7 +398,7 @@ section:nth-of-type(60) {
 #overlay-content,
 #overlay-content-slots {
   background: #367d70;
-  height: 420px;
+  height: 380px;
 }
 
 #legend p {
@@ -432,7 +432,7 @@ section:nth-of-type(60) {
 }
 
 #time_blocks_container {
-  height: 50px;
+  height: 120px;
   overflow: auto;
 }
 
