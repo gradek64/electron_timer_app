@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require("electron")
 const path = require("path")
 const { debug } = require("./debug")
+const { turnPins } = require("./setGpioPinsOn_Off")
 
 debug("process.env.DEBUG set =>", process.env.DEBUG, "green")
 
@@ -18,6 +19,10 @@ function createWindow() {
     win.webContents.openDevTools()
   }
 
+  win.on('closed',()=>{
+    
+  })
+
   win.loadFile("template.html")
 }
 
@@ -33,8 +38,4 @@ app.whenReady().then(() => {
   })
 })
 
-app.on("window-all-closed", () => {
-  if (process.platform !== "darwin") {
-    app.quit()
-  }
-})
+

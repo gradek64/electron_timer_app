@@ -136,8 +136,8 @@ p {
 
 /*time digits display*/
 .clock_display {
-  bottom: 116px;
-  left: 120px;
+  bottom: 117px;
+  left: 109px;
   color: wheat;
   font-family: digital;
   font-size: 4rem;
@@ -146,6 +146,7 @@ p {
 .clock_display.in-overlay {
   top: 28px;
   left: 20px;
+  font-size: 3rem;
 }
 /*time blocks*/
 #overlay-content-slots,
@@ -189,8 +190,9 @@ p {
   border: 1px solid #5e3636;
   background: rgb(207, 111, 143);
   border-radius: 10%;
-  padding: 5px;
+  padding: 7px;
   margin: 5px;
+  height: 20px;
   cursor: pointer;
 }
 #time_blocks_container {

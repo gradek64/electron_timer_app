@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
       //callback is ready
       const delay = setTimeout(() => {
         clearInterval(delay)
-        shell.exec("sudo poweroff")
+        window.close()
       }, 1000)
     })
   })
