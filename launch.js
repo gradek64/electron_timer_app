@@ -9,7 +9,11 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 480, //800x480 is resolution of the touch screen
+    x:0,
+    y:0,
+    title:'Timer app',
     autoHideMenuBar: true,
+    frame:false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
