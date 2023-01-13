@@ -13,7 +13,7 @@ function createWindow() {
     y:0,
     title:'Timer app',
     autoHideMenuBar: true,
-    frame:false,
+    frame:process.env.DEBUG?true:false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
@@ -41,5 +41,3 @@ app.whenReady().then(() => {
     }
   })
 })
-
-

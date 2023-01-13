@@ -18,7 +18,7 @@ const setPins = {
   timer: [
     {
       setup: "OUTPUT",
-      pinNumber: 24,
+      pinNumber: 22, //waterpump from heater app
     },
   ],
 }

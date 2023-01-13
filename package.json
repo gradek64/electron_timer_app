@@ -20,8 +20,7 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
-    "rpio": "^2.4.2",
-    "shelljs": "0.7.5"
+    "rpio": "^2.4.2"
   },
   "devDependencies": {
     "chalk": "4.1.0",
